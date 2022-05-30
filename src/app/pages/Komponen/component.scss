@@ -1,0 +1,162 @@
+.title-filter {
+  margin-top: 20px;
+  display: flex;
+  margin-left: 20px;
+  border-bottom: 1px solid #f5f5f5;
+  h3 {
+    margin-top: 20px;
+  }
+}
+
+.date-input{
+  display: flex;
+  width: 80px;
+  flex-direction: row;
+  background-color: red !important;
+  
+}
+.form-filter {
+  // background-color: red;
+
+  
+  .input-section {
+    margin: 5px;
+    // background-color: aqua;
+    display: flex;
+    max-width: 600px;
+    height: 60px;
+
+    label.name {
+      // background-color: red;
+      height: 35px;
+      line-height: 35px;
+      min-width: 150px;
+    }
+    input {
+      border: 1px solid #cccfd8;
+      height: 35px;
+      border-radius: 4px;
+    }
+
+    select {
+      min-width: 200px;
+      border: 1px solid #cccfd8;
+      border-radius: 4px;
+      padding-left: 5px;
+      height: 35px;
+    }
+    .form-slct{
+        padding: 0 !important;
+    }
+  }
+  .btn-filter {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+.form-control {
+  // position: relative;
+  max-width: 600px;
+  // padding-bottom: 40px
+  // height: 300px;
+
+  .btn-section {
+    position: inherit;
+  }
+}
+
+.modal-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: none;
+
+  .bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 999999;
+    opacity: 0.3;
+  }
+
+  .box {
+    min-width: 400px;
+    min-height: 300px;
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    border-radius: 4px;
+    transform: translate(-50%, -60%);
+    background-color: white;
+    z-index: 999999;
+    padding: 20px;
+
+    .close-icon {
+      color: black;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+
+    .input-section {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        border: none;
+        // background-color: whitesmoke;
+        height: 35px;
+        border-radius: 4px;
+        padding-left: 5px;
+      }
+      .topik-field{
+        border: 1px solid #cccfd8;
+    }
+      
+    }
+  }
+}
+.open {
+  display: block;
+  transition: 0.3s;
+
+  .box {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.btn-sections {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.search-section {
+  display: flex;
+  justify-content: end;
+  margin-right: 18px;
+  margin-bottom: 20px;
+
+  h4 {
+    margin-top: 6px;
+    margin-right: 4px;
+    font-size: 14px;
+  }
+
+  .search-field {
+    border: 1px solid #cccfd8;
+    border-radius: 4px;
+  }
+}

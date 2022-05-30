@@ -1,0 +1,44 @@
+  .tag{
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        border: 1px solid #cccfd8;
+        border-radius: 4px;
+        align-items: center;
+        padding-left: 10px !important;
+        margin-top: 20px;
+
+        input {
+            outline: none;
+            border: none;
+            background: transparent;
+            padding-left: 5px;
+        }
+
+        li.items {
+            list-style: none;
+            background-color: #0095E8;
+            padding: 0 7px;
+            height: 25px;
+            line-height: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+
+            span {
+                color: white;
+            }
+            
+            span.label {
+                padding-right: 10px;
+                
+            }
+        }
+    }
+  }
+  
+  
+
