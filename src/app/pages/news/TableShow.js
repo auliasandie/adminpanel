@@ -60,7 +60,8 @@ const dataSource = [
     {
       title: 'Action',
       dataIndex: 'action', 
-      key: 'action',
+      key: '',
+      render: () => <a href='#'>test</a>,
     },
   ];
 

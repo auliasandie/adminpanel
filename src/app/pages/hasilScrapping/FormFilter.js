@@ -43,10 +43,9 @@ const FormFilter = () => {
           <label htmlFor='' className='name'>
             Waktu
           </label>
-          <DatePickerr />
-
-
-
+          <div>
+          <DatePickerr test={{borderRadius: '4px', border: '1px solid #c7cad3', height: '35px'}}/>
+          </div>
         </div>
         <div className='btn-filter'>
           <button className='btn btn-success m-2'>Simpan</button>

@@ -27,20 +27,22 @@ const AsideDefault: FC = () => {
       <div className='aside-logo flex-column-auto' id='kt_aside_logo'>
         {/* begin::Logo */}
         {aside.theme === 'dark' && (
-          <Link to='/dashboard'>
+          <Link to='/scraping'>
             <img
               alt='Logo'
-              className='h-25px logo'
-              src={toAbsoluteUrl('/media/logos/logo-1-dark.svg')}
+              className='h-60px logo'
+              style={{marginLeft: "50px"}}
+              src={toAbsoluteUrl('/media/logos/ONYX-logo.png')}
             />
           </Link>
         )}
         {aside.theme === 'light' && (
-          <Link to='/dashboard'>
+          <Link to='/scraping'>
             <img
               alt='Logo'
-              className='h-25px logo'
-              src={toAbsoluteUrl('/media/logos/logo-1.svg')}
+              className='h-60px logo'
+              style={{marginLeft: "50px"}}
+              src={toAbsoluteUrl('/media/logos/ONYX-logo.png')}
             />
           </Link>
         )}

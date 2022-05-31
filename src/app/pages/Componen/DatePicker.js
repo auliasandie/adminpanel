@@ -10,9 +10,10 @@ const dateFormat = 'YYYY/MM/DD';
 
 
 
-const DatePickerr = () => (
+const DatePickerr = (props) => (
   <Space direction="vertical" size={10}>
     <RangePicker
+    style={props.test}
       defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
       format={dateFormat}
     />
