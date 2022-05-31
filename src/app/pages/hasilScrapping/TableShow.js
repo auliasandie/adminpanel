@@ -1,5 +1,6 @@
 import React from 'react'
 import {Table} from 'antd'
+import {Link} from 'react-router-dom'
 
 const dataSource = [
   {
@@ -51,7 +52,7 @@ const columns = [
     title: 'Action',
     key: '',
     dataIndex: '',
-    render: () => <a href='#'>Detail</a>,
+    render: () => <a href='/hasil-scraping/detail'>Detail</a> ,
   },
 ]
 

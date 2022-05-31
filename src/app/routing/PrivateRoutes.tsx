@@ -5,6 +5,7 @@ import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {MenuTestPage} from '../pages/MenuTestPage'
 import { HasilScrapping } from '../pages/hasilScrapping/HasilScrapping'
 import { DashboardTwitter } from '../pages/scrapping/DashboardScrapping'
+import { DetailScraping } from '../pages/Detail/DetailPage'
 
 export function PrivateRoutes() {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))
@@ -19,8 +20,8 @@ export function PrivateRoutes() {
       <Switch>
         <Route path='/scraping' component={DashboardTwitter} />
         <Route path='/hasil-scraping' component={HasilScrapping} />
-        {/* <Route path='/news' component={HasilScrapping} />
-        <Route path='/builder' component={BuilderPageWrapper} />
+        <Route path='/hasil-scraping/detail' component={DetailScraping} />
+        {/*<Route path='/builder' component={BuilderPageWrapper} />
         <Route path='/crafted/pages/profile' component={ProfilePage} />
         <Route path='/crafted/pages/wizards' component={WizardsPage} />
         <Route path='/crafted/widgets' component={WidgetsPage} />

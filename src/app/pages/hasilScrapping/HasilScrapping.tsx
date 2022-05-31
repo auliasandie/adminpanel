@@ -2,7 +2,6 @@
 import React, {FC, useState} from 'react'
 import {useIntl} from 'react-intl'
 import {PageTitle} from '../../../_metronic/layout/core'
-import ModalDetail from './Detail/ModalDetail'
 import FormFilter from './FormFilter'
 import TableShow from './TableShow'
 
@@ -69,7 +68,6 @@ const HasilScrapping: FC = () => {
     <>
       <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'Hasil Scraping'})}</PageTitle>
       <HasilScrappingPage />
-      <ModalDetail />
     </>
   )
 }
