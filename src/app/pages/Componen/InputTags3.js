@@ -50,8 +50,8 @@ const InputTags3 = (props) => {
 
     return (
     
-        <div className='tag'>
-                <ul>
+        <div className='tag' >
+                <ul >
                     {items.map((item, i) => {
                         return (
                             <li className='items' key={i} id={i}>

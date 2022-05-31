@@ -26,19 +26,19 @@ const Modal = (props) => {
                 </div>
                 <form action="" className='form-control' onSubmit={handleSubmit}>
                   <div className="input-section p-5">
-                    <label htmlFor="" className="name">Topik</label>
+                    <label htmlFor="" className="name py-2">Topik</label>
                     <input type="text" className="input topik-field" />
                   </div>
-                  <div className="input-section p-5">
-                    <label htmlFor="" className="name">Keywords</label>
-                    <InputTags3 placeholder="Input Keywords" />
+                  <div className="input-section p-5 ">
+                    <label htmlFor="" className="name" >Keywords</label>
+                    <InputTags3 placeholder="Input Keywords"  />
                   </div>
                   <div className="input-section p-5">
                     <label htmlFor="" className="name">Hashtags</label>
                     <InputTags3 placeholder="Input Hastags" />
                   </div>
                   <div className="input-section p-5">
-                    <label htmlFor="" className="name">Status</label>
+                    <label htmlFor="" className="name py-2">Status</label>
                     <select name="" id="" className='form-select'>
                       <option value="draft">Draft</option>
                       <option value="draft">Aktif</option>
