@@ -131,7 +131,7 @@ const DashboardTwitter: FC = () => {
               <input type="text" className='search-field' />
             </div>
 
-            <div className='my-5 p5'>
+            <div className='my-5 p-5 '>
               <TableShow />
             </div>
           </div>
