@@ -42,7 +42,7 @@ const Modal = (props) => {
                     <select name="" id="" className='form-select'>
                       <option value="draft">Draft</option>
                       <option value="draft">Aktif</option>
-                      <option value="draft">Inaktif</option>
+                      <option value="draft">Non Aktif</option>
                     </select>
                   </div>
                   <div className="btn-sections">
