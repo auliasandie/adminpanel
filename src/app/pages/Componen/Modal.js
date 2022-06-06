@@ -1,14 +1,43 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import InputTags3 from './InputTags3'
 import "./component.scss"
+import axios from 'axios'
 
 
 
 const Modal = (props) => {
+  const [topik, setTopik] = useState('')
+  const [dataKeyword, setDataKeyword] = useState([])
+  const [dataHastags, setDataHastags] = useState([])
+  const [status, setStatus] = useState('draft')
+  const [submit, setSubmit] = useState(false)
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    const data = {
+      topic: topik,
+      keywords: dataKeyword,
+      hastags: dataHastags,
+      status: status,
+      url: ['awd','awd']
+    }
+   
+        axios.post('http://192.168.10.170:4008/api/v1/config/crawling', data)
+        .then(res => {
+          console.log(res)
+          setSubmit(false)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
+   
+
   }
+
+ 
   return (
     <div>
       <div className={`${props.show ? 'modal-box open' : 'modal-box'}`} >
@@ -24,32 +53,32 @@ const Modal = (props) => {
                   <h1>Tambah Topik</h1>
                   {/* <i className="bi bi-x-circle close-icon" onClick={() => props.setShow(false)}></i> */}
                 </div>
-                <form action="" className='form-control' onSubmit={handleSubmit}>
+                <div action="" className='form-control'  >
                   <div className="input-section p-5">
                     <label htmlFor="" className="name py-2">Topik</label>
-                    <input type="text" className="input topik-field" />
+                    <input type="text" className="input topik-field" required onChange={(e) => setTopik(e.target.value)}/>
                   </div>
                   <div className="input-section p-5 ">
                     <label htmlFor="" className="name" >Keywords</label>
-                    <InputTags3 placeholder="Input Keywords"  />
+                    <InputTags3 placeholder="Input Keywords" items={dataKeyword} setItems={setDataKeyword} />
                   </div>
                   <div className="input-section p-5">
                     <label htmlFor="" className="name">Hashtags</label>
-                    <InputTags3 placeholder="Input Hastags" />
+                    <InputTags3 placeholder="Input Hastags" items={dataHastags} setItems={setDataHastags}/>
                   </div>
                   <div className="input-section p-5">
                     <label htmlFor="" className="name py-2">Status</label>
-                    <select name="" id="" className='form-select'>
-                      <option value="draft">Draft</option>
-                      <option value="draft">Aktif</option>
-                      <option value="draft">Non Aktif</option>
+                    <select name="" id="" className='form-select' required value={status} onChange={(e) => setStatus(e.target.value)}>
+                      <option value="Draft">Draft</option>
+                      <option value="Aktif">Aktif</option>
+                      <option value="Non Aktif">Non Aktif</option>
                     </select>
                   </div>
                   <div className="btn-sections">
-                    <button className='btn btn-success m-2'>Simpan</button>
+                    <button className='btn btn-success m-2'  onClick={handleSubmit}>Simpan</button>
                     <button className='btn btn-danger m-2' onClick={() => props.setShow(false)}>Batal</button>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
 

@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from 'axios'
+import { type } from 'os'
 import React, {FC, useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
+import { array } from 'yup'
 import {PageTitle} from '../../../_metronic/layout/core'
 
 import Modal from '../Componen/Modal'
@@ -102,12 +104,24 @@ import TableShow from '../news/TableShow'
 
 
 
+
+
 const DashboardTwitter: FC = () => {
   const intl = useIntl()
   const [data, setData] = useState([])
   const [show, setShow] = useState(false)
+  const [dataConfiguration, setDataConfiguration] = useState([])
+  
 
-  console.log(show, 'show')
+  // useEffect(() => {
+  //   axios.get('https://192.168.10.170/api/v1/config/crawling')
+  //   .then(res => {
+  //     setDataConfiguration(res.result)
+  //   })
+  // }, [])
+
+  
+  
 
   return (
     <>
@@ -120,7 +134,7 @@ const DashboardTwitter: FC = () => {
             {/* <TagsInputri /> */}
             {/* <InputTags2 /> */}
             <div className='pt-4 p-lg-5'>
-            <Modal show={show} setShow={setShow} />
+            <Modal show={show} setShow={setShow}  />
             <button className='btn btn-primary' onClick={() => setShow(true)}>Tambah</button>
             </div>
 

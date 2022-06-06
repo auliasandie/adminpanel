@@ -5,9 +5,9 @@ import './inputtags3.scss'
 
 const InputTags3 = (props) => {
 
-    const label = ['anjay']
+    // const label = ['anjay']
     const [show, setShow] = useState(false);
-    const [items, setItems] = useState(label)
+    // const [items, setItems] = useState(label)
     const [inputValue, setInputValue] = useState('')
     const [data, setData] = useState([])
 
@@ -18,41 +18,35 @@ const InputTags3 = (props) => {
         if(e.keyCode === 13) {
            if (inputValue !== '') {
               
-                setItems([
-                    ...items, inputValue
+                props.setItems([
+                    ...props.items, inputValue
                 ])
              
            }
             setInputValue('')
-            console.log(items, 'item')
+            // console.log(items, 'item')
         }
 
         if (e.keyCode === 8) {
             // return console.log('true')
             if ( inputValue === '') {
-                setItems((item) =>  item.filter((item, i) => i !== 0) )
-                console.log(items, 'ini')
+                props.setItems((item) =>  item.filter((item, i) => i !== 0) )
+                // console.log(items, 'ini')
             }
         }
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-    //    console.log(.items)
-
-        
-    }
+    
 
     const handleRemove = (e) => {
         let id = e.target.parentElement.id
-        setItems((item) => item.filter((item, i) => i !== parseInt(id)))
+        props.setItems((item) => item.filter((item, i) => i !== parseInt(id)))
     }
 
     return (
     
         <div className='tag' >
                 <ul >
-                    {items.map((item, i) => {
+                    {props.items.map((item, i) => {
                         return (
                             <li className='items' key={i} id={i}>
                                 <span className='label'>{item}</span>
@@ -60,7 +54,7 @@ const InputTags3 = (props) => {
                             </li>
                         )
                     })}
-                    <input type='text' placeholder={props.placeholder} onKeyDown={handleKeyDown} value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+                    <input type='text' placeholder={props.placeholder} required onKeyDown={handleKeyDown} value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
                 </ul>
         </div>
 
