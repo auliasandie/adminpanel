@@ -1,6 +1,7 @@
 import React from 'react'
 import 'antd/dist/antd.css';
 import { Table } from 'antd'
+import { DetailScraping } from '../Detail/DetailPage';
 
 const dataSource = [
   {
@@ -61,9 +62,23 @@ const dataSource = [
       title: 'Action',
       dataIndex: 'action', 
       key: '',
-      render: () => <a href='#'>test</a>,
+      render: (text, record) => (
+        <button onClick={()=> console.log(record)}>
+          {"Button Text"}
+        </button>
+       ),
     },
   ];
+
+  // const button = [
+  //   {
+  //     title: 'edit',
+  //     icon: 'edit',
+  //     // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null && dataUser.npwp.substring(0, 9) === e.idPerusahaan.substring(0, 9)),
+  //       // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null),
+  //     render: (e) => (<DetailScraping />)
+  //   }
+  // ]
 
 const TableShow = () => {
   return (

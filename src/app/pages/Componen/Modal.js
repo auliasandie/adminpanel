@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react'
 import InputTags3 from './InputTags3'
 import "./component.scss"
 import axios from 'axios'
+import { useDispatch, useSelector } from "react-redux";
+import { SimpanToApi } from '../../../setup/action/scrapingaction';
 
 
 
@@ -11,27 +13,31 @@ const Modal = (props) => {
   const [dataHastags, setDataHastags] = useState([])
   const [status, setStatus] = useState('draft')
   const [submit, setSubmit] = useState(false)
+  const dispatch = useDispatch();
+  // const {form} = useSelector(state => state.createTopicReducer);
   
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const data = {
+    const datapost = {
       topic: topik,
       keywords: dataKeyword,
       hastags: dataHastags,
       status: status,
-      url: ['awd','awd']
     }
+    // dispatch(postDataTopic(datapost));
+    dispatch(SimpanToApi(datapost));
+    // console.log('data',datapost)
    
-        axios.post('http://192.168.10.170:4008/api/v1/config/crawling', data)
-        .then(res => {
-          console.log(res)
-          setSubmit(false)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+        // axios.post('http://192.168.10.170:4008/api/v1/config/crawling', datapost)
+        // .then(res => {
+        //   console.log(res)
+        //   setSubmit(false)
+        // })
+        // .catch(err => {
+        //   console.log(err)
+        // })
 
    
 
