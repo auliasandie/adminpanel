@@ -1,7 +1,25 @@
-import React from 'react'
+
+import {useHistory} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Table } from 'antd'
-import { DetailScraping } from '../Detail/DetailPage';
+
+
+
+  // const button = [
+  //   {
+  //     title: 'edit',
+  //     icon: 'edit',
+  //     // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null && dataUser.npwp.substring(0, 9) === e.idPerusahaan.substring(0, 9)),
+  //       // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null),
+  //     render: (e) => (<DetailScraping />)
+  //   }
+  // ]
+
+const TableShow = () => {
+  
+  const history = useHistory();
+  // const detailpage = useCallback(() => history.push('/sample'), [history]);
+  const detailpage = () => history.push('/detail-scraping');
 
 const dataSource = [
   {
@@ -11,7 +29,7 @@ const dataSource = [
     status:"test",
     lastUpdate:"test",
     jumlahLaman:"test",
-    action:"test",
+    action:"testaaa",
   },
   ];
 
@@ -61,26 +79,22 @@ const dataSource = [
     {
       title: 'Action',
       dataIndex: 'action', 
-      key: '',
+      key: '1',
       render: (text, record) => (
-        <button onClick={()=> console.log(record)}>
-          {"Button Text"}
+        <>
+        <button onClick={()=> detailpage()}>
+          {"Detail"}
         </button>
+        <button onClick={()=> console.log(record)}>
+          {"Edit"}
+        </button>
+        <button onClick={()=> console.log(record)}>
+          {"Hapus"}
+        </button>
+        </>
        ),
     },
   ];
-
-  // const button = [
-  //   {
-  //     title: 'edit',
-  //     icon: 'edit',
-  //     // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null && dataUser.npwp.substring(0, 9) === e.idPerusahaan.substring(0, 9)),
-  //       // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null),
-  //     render: (e) => (<DetailScraping />)
-  //   }
-  // ]
-
-const TableShow = () => {
   return (
     
         <Table dataSource={dataSource} columns={columns} />  
