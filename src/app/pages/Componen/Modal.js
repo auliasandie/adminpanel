@@ -10,7 +10,6 @@ const Modal = (props) => {
   const [dataKeyword, setDataKeyword] = useState([])
   const [dataHastags, setDataHastags] = useState([])
   const [status, setStatus] = useState('draft')
-  const [submit, setSubmit] = useState(false)
   
 
   const handleSubmit = (e) => {
@@ -21,13 +20,11 @@ const Modal = (props) => {
       keywords: dataKeyword,
       hastags: dataHastags,
       status: status,
-      url: ['awd','awd']
     }
    
         axios.post('http://192.168.10.170:4008/api/v1/config/crawling', data)
         .then(res => {
           console.log(res)
-          setSubmit(false)
         })
         .catch(err => {
           console.log(err)

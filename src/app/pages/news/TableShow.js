@@ -4,7 +4,7 @@ import { Table } from 'antd'
 
 const dataSource = [
   {
-    nama: "test",
+    topic: "topic",
     keyword:"test",
     hastag:"test",
     status:"test",
@@ -22,10 +22,11 @@ const dataSource = [
     //   width: 60,
     // },
     {
-      title: 'Nama',
-      dataIndex: 'nama',
-      key: 'nama',
-      width: 250,
+      title: 'Topic',
+      dataIndex: 'topic',
+      key: 'topic',
+      width: 150,
+      align: 'center'
     },
     // {
     //   title: 'Topik',
@@ -33,19 +34,22 @@ const dataSource = [
     //   key: 'topik',
     // },
     {
-      title: 'Keyword',
-      dataIndex: 'keyword', 
-      key: 'keyword',
+      title: 'Keywords',
+      dataIndex: 'keywords', 
+      key: 'keywords',
+      
     },
     {
-      title: 'Hastag',
-      dataIndex: 'hastag', 
-      key: 'hastag',
+      title: 'Hastags',
+      dataIndex: 'hastags', 
+      key: 'hastags',
+      align: 'center'
     },
     {
       title: 'Status',
       dataIndex: 'status', 
       key: 'status',
+      align: 'center'
     },
     {
       title: 'Last Update',
@@ -65,10 +69,10 @@ const dataSource = [
     },
   ];
 
-const TableShow = () => {
+const TableShow = (props) => {
   return (
     
-        <Table dataSource={dataSource} columns={columns} />  
+        <Table dataSource={props.data} columns={columns} />  
     
   )
 }

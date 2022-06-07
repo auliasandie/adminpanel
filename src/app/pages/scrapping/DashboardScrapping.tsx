@@ -113,12 +113,16 @@ const DashboardTwitter: FC = () => {
   const [dataConfiguration, setDataConfiguration] = useState([])
   
 
-  // useEffect(() => {
-  //   axios.get('https://192.168.10.170/api/v1/config/crawling')
-  //   .then(res => {
-  //     setDataConfiguration(res.result)
-  //   })
-  // }, [])
+  useEffect(() => {
+    axios.get('http://192.168.10.170:4008/api/v1/config/crawling?limit=10&page=1')
+    .then(res => {
+      console.log(res.data.data.result, 'result')
+      setDataConfiguration(res.data.data.result)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
 
   
   
@@ -131,8 +135,6 @@ const DashboardTwitter: FC = () => {
       <div>
         <div className='bg-white rounded'>
           <div>
-            {/* <TagsInputri /> */}
-            {/* <InputTags2 /> */}
             <div className='pt-4 p-lg-5'>
             <Modal show={show} setShow={setShow}  />
             <button className='btn btn-primary' onClick={() => setShow(true)}>Tambah</button>
@@ -146,7 +148,7 @@ const DashboardTwitter: FC = () => {
             </div>
 
             <div className='my-5 p-5 '>
-              <TableShow />
+              <TableShow data={dataConfiguration} />
             </div>
           </div>
         </div>
