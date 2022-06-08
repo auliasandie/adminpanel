@@ -2,8 +2,7 @@
 import React, {FC, useState} from 'react'
 import {useIntl} from 'react-intl'
 import {PageTitle} from '../../../_metronic/layout/core'
-import FormFilter from './FormFilter'
-import TableShow from './TableShow'
+import FormFilter from '../Componen/FormFilter'
 
 const HasilScrappingPage: FC = () => {
   return (
@@ -20,7 +19,6 @@ const HasilScrappingPage: FC = () => {
           <div className='tab-pane fade show active' id='kt_table_widget_5_tab_1'>
             {/* begin::Table container */}
             <div className='table-responsive'>
-              <TableShow/>
               {/* begin::Table */}
               {/* <table className='table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4'>
               

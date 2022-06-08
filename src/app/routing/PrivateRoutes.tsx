@@ -4,7 +4,7 @@ import {FallbackView} from '../../_metronic/partials'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {MenuTestPage} from '../pages/MenuTestPage'
 import { HasilScrapping } from '../pages/hasilScrapping/HasilScrapping'
-import { DashboardTwitter } from '../pages/scrapping/DashboardScrapping'
+import { DashboardScraping } from '../pages/scrapping/DashboardScrapping'
 import { DetailScraping } from '../pages/Detail/DetailPage'
 
 export function PrivateRoutes() {
@@ -18,7 +18,7 @@ export function PrivateRoutes() {
   return (
     <Suspense fallback={<FallbackView />}>
       <Switch>
-        <Route path='/scraping' component={DashboardTwitter} />
+        <Route path='/scraping' component={DashboardScraping} />
         <Route path='/hasil-scraping' component={HasilScrapping} />
         <Route path='/detail-scraping' component={DetailScraping} />
         {/*<Route path='/builder' component={BuilderPageWrapper} />

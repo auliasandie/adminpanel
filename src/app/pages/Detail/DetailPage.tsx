@@ -9,7 +9,7 @@ const DashboardDetail: FC = () => {
   return (
     <div className='bg-white rounded'>
       <div className='text-center border-bottom'>
-        <h1 className='p-5 text-start'>Detail Gan</h1>
+        <h1 className='p-5 text-start'>Detail</h1>
 
         <div className="detail-box">
           <div className="box">

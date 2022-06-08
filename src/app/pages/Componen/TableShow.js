@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Table } from 'antd'
 import { DetailScraping } from '../Detail/DetailPage';
-import EditModal from '../Componen/EditModal';
+import EditModal from './EditModal';
 
 // const dataSource = [
 //   {
@@ -32,7 +32,20 @@ import EditModal from '../Componen/EditModal';
 
 const TableShow = (props) => {
   const [show, setShow] = useState(false)
-  const [dataToEdit, setDataToEdit] = useState([])
+  // const [dataToEdit, setDataToEdit] = useState(
+  //   {
+  //     topic: '',
+  //     hastags: '',
+  //     keywords: '',
+  //     status: ''
+  //   }
+  // )
+  const [topic, setTopic] = useState('')
+  const [hastags, setHastags] = useState('')
+  const [keywords, setKeywords] = useState('')
+  const [status, setStatus] = useState('')
+  const [id, setId] = useState(null)
+  
 
   
   const history = useHistory();
@@ -103,14 +116,37 @@ const dataSource = [
   ];
   const handleClick = (data) => {
     setShow(true)
-    setDataToEdit(data)
-    // console.log(data, 'anjay')
+    // setDataToEdit((prevState) => ({
+    //   ...prevState,
+    //   topic: data.topic,
+    //   hastags: data.hastags,
+    //   keywords: data.keywords,
+    //   status: data.status
+    // }))
+    setTopic(data.topic)
+    setHastags(data.hastags)
+    setKeywords(data.keywords)
+    setStatus(data.status)
+    setId(data.id)
+    
   }
 
   return (
     <>
         <Table dataSource={props.data} columns={columns} />  
-        <EditModal show={show} setShow={setShow} data={dataToEdit}/>
+        <EditModal 
+        show={show} 
+        topic={topic} 
+        hastags={hastags} 
+        keywords={keywords} 
+        status={status} 
+        setShow={setShow} 
+        setTopic={setTopic}
+        setHastags={setHastags}
+        setKeywords={setKeywords}
+        setStatus={setStatus}
+        id={id}
+        />
     </>
   )
 }
