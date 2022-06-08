@@ -1,8 +1,11 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import {useLocation} from 'react-router'
 import clsx from 'clsx'
 import {AsideMenuMain} from './AsideMenuMain'
 import {DrawerComponent, ScrollComponent, ToggleComponent} from '../../../assets/ts/components'
+import ReactNestedMenu from './ReactMenuAside'
+import axios from 'axios'
+import './sidebar.css'
 
 type Props = {
   asideMenuCSSClasses: string[]
@@ -11,8 +14,12 @@ type Props = {
 const AsideMenu: React.FC<Props> = ({asideMenuCSSClasses}) => {
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const {pathname} = useLocation()
+  const [dataMenu, setDataMenu] = useState([])
 
   useEffect(() => {
+    axios.get('data.json').then((res) => 
+    setDataMenu(res.data.menu))
+    
     setTimeout(() => {
       DrawerComponent.reinitialization()
       ToggleComponent.reinitialization()
@@ -44,7 +51,17 @@ const AsideMenu: React.FC<Props> = ({asideMenuCSSClasses}) => {
           asideMenuCSSClasses.join(' ')
         )}
       >
-        <AsideMenuMain />
+        <div className='menu-item test'>
+        <ReactNestedMenu
+          navParentClassname='vertical nested child-sub'
+          navTopLevelParentClassname='vertical'
+          navChildClassname='childs child-sub'
+          navChildElementClassname='has-child child-sub'
+          menuData={dataMenu}
+        />
+        </div>
+        
+        {/* <AsideMenuMain /> */}
       </div>
     </div>
   )

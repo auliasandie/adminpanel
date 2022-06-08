@@ -1,0 +1,18 @@
+{ "menu":[
+    {
+      "id": 1,
+      "title": "Scraping",
+      "url": "/scraping"
+    },
+    {
+      "id": 2,
+      "title": "Hasil Scraping",
+      "url": "/hasil-scraping",
+      "children": [{
+        "id": 3,
+        "title": "Child",
+        "url": "/hasil-scraping"
+      }]
+    }
+]  
+}
