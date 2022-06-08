@@ -2,6 +2,10 @@ import React from 'react'
 
 const EditModal = (props) => {
   const {topic, hastags,keywords, status} = props.data
+
+  const handleSubmit = () => {
+    
+  }
   return (
     <div>
          <div>
@@ -51,7 +55,7 @@ const EditModal = (props) => {
                  
                  
                   <div className="btn-sections">
-                    <button className='btn btn-success m-2'  >Simpan</button>
+                    <button className='btn btn-success m-2' onClick={() => handleSubmit()} >Simpan</button>
                     <button className='btn btn-danger m-2' onClick={() => props.setShow(false)}>Batal</button>
                   </div>
                 </div>

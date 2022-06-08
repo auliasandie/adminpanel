@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {useHistory} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Table } from 'antd'
 import { DetailScraping } from '../Detail/DetailPage';
@@ -18,6 +19,7 @@ import EditModal from '../Componen/EditModal';
 
   
 
+
   // const button = [
   //   {
   //     title: 'edit',
@@ -31,6 +33,23 @@ import EditModal from '../Componen/EditModal';
 const TableShow = (props) => {
   const [show, setShow] = useState(false)
   const [dataToEdit, setDataToEdit] = useState([])
+
+  
+  const history = useHistory();
+  // const detailpage = useCallback(() => history.push('/sample'), [history]);
+  const detailpage = () => history.push('/detail-scraping');
+
+const dataSource = [
+  {
+    nama: "test",
+    keyword:"test",
+    hastag:"test",
+    status:"test",
+    lastUpdate:"test",
+    jumlahLaman:"test",
+    action:"testaaa",
+  },
+  ];
 
   const columns = [
  
