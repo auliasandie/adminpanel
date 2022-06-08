@@ -1,26 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'antd/dist/antd.css';
 import { Table } from 'antd'
+import { DetailScraping } from '../Detail/DetailPage';
+import EditModal from '../Componen/EditModal';
 
-const dataSource = [
-  {
-    topic: "topic",
-    keyword:"test",
-    hastag:"test",
-    status:"test",
-    lastUpdate:"test",
-    jumlahLaman:"test",
-    action:"test",
-  },
-  ];
+// const dataSource = [
+//   {
+//     topic: "topic",
+//     keyword:"test",
+//     hastag:"test",
+//     status:"test",
+//     lastUpdate:"test",
+//     jumlahLaman:"test",
+//     action:"test",
+//   },
+//   ];
+
+  
+
+  // const button = [
+  //   {
+  //     title: 'edit',
+  //     icon: 'edit',
+  //     // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null && dataUser.npwp.substring(0, 9) === e.idPerusahaan.substring(0, 9)),
+  //       // disibled: (e) => !((e.kodeProses === '001' || e.kodeProses === '120') && e.flagSsm === null),
+  //     render: (e) => (<DetailScraping />)
+  //   }
+  // ]
+
+const TableShow = (props) => {
+  const [show, setShow] = useState(false)
+  const [dataToEdit, setDataToEdit] = useState([])
 
   const columns = [
-    // {
-    //   title: 'No',
-    //   dataIndex: 'no',
-    //   key: 'no',
-    //   width: 60,
-    // },
+ 
     {
       title: 'Topic',
       dataIndex: 'topic',
@@ -28,15 +41,12 @@ const dataSource = [
       width: 150,
       align: 'center'
     },
-    // {
-    //   title: 'Topik',
-    //   dataIndex: 'topik', 
-    //   key: 'topik',
-    // },
+
     {
       title: 'Keywords',
       dataIndex: 'keywords', 
       key: 'keywords',
+      width: 300
       
     },
     {
@@ -65,15 +75,24 @@ const dataSource = [
       title: 'Action',
       dataIndex: 'action', 
       key: '',
-      render: () => <a href='#'>test</a>,
+      render: (text, record) => (
+        <a onClick={() => handleClick(record)}>
+          {"Edit"}
+        </a>
+       ),
     },
   ];
+  const handleClick = (data) => {
+    setShow(true)
+    setDataToEdit(data)
+    // console.log(data, 'anjay')
+  }
 
-const TableShow = (props) => {
   return (
-    
+    <>
         <Table dataSource={props.data} columns={columns} />  
-    
+        <EditModal show={show} setShow={setShow} data={dataToEdit}/>
+    </>
   )
 }
 
