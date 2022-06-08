@@ -44,10 +44,10 @@ const EditModal = (props) => {
               <div className="box col-md-12 p-5 bg-white">
                 <div>
                   
-                  <h1>Tambah Topik</h1>
+                  <h1>Edit Topik</h1>
                   {/* <i className="bi bi-x-circle close-icon" onClick={() => props.setShow(false)}></i> */}
                 </div>
-                <div action="" className='form-control'  >
+                <div action="" className='form-control' style={{border: 'transparent'}} >
                   <div className="input-section p-5">
                     <label htmlFor="" className="name py-2">Topik</label>
                     <input type="text" className="input topik-field" onChange={(e) => setTopic(e.target.value)} value={topic} />

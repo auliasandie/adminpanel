@@ -59,7 +59,7 @@ const Modal = (props) => {
                   <h1>Tambah Topik</h1>
                   {/* <i className="bi bi-x-circle close-icon" onClick={() => props.setShow(false)}></i> */}
                 </div>
-                <div action="" className='form-control'  >
+                <div action="" className='form-control' style={{border: 'transparent'}}>
                   <div className="input-section p-5">
                     <label htmlFor="" className="name py-2">Topik</label>
                     <input type="text" className="input topik-field" required onChange={(e) => setTopik(e.target.value)}/>

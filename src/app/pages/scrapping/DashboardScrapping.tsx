@@ -2,13 +2,12 @@
 import axios from 'axios'
 import React, {FC, useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllTopic } from '../../../setup/action/topicReducer'
 import {PageTitle} from '../../../_metronic/layout/core'
 import Modal from '../Componen/Modal'
 import { TablesScraping } from '../Componen/TableScraping'
-import TableShow from '../Componen/TableShow'
-
-
-
+import { RootState } from '../../../setup'
 
 
 
@@ -16,22 +15,17 @@ import TableShow from '../Componen/TableShow'
 
 const DashboardScraping: FC = () => {
   const intl = useIntl()
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [show, setShow] = useState(false)
   const [dataConfiguration, setDataConfiguration] = useState([])
-  
+  const dispatch :any = useDispatch()
+  const { data } : any = useSelector((state: RootState) => state.getDataTopic)
 
   useEffect(() => {
-    axios.get('http://192.168.10.170:4008/api/v1/config/crawling?limit=10&page=1')
-    .then(res => {
-      console.log(res.data.data.result, 'result')
-      setDataConfiguration(res.data.data.result)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    dispatch(getAllTopic())
   }, [])
 
+  // console.log(data, 'data guys')
   
   
 
@@ -44,8 +38,7 @@ const DashboardScraping: FC = () => {
         <div className='bg-white rounded'>
           <div>
             <div className='pt-4 p-lg-5'>
-            <Modal show={show} setShow={setShow}  />
-            <button className='btn btn-primary' onClick={() => setShow(true)}>Tambah</button>
+              <Modal show={show} setShow={setShow}  />
             </div>
 
             <div className='search-section'>
@@ -56,8 +49,8 @@ const DashboardScraping: FC = () => {
             </div>
 
             <div className='my-5 p-5 '>
-              <TableShow data={dataConfiguration} />
-              <TablesScraping data={dataConfiguration} className='mb-5 mb-xl-8' />
+              {/* <TableShow data={dataConfiguration} /> */}
+              <TablesScraping data={data} setShowAdd={setShow} className='mb-5 mb-xl-8' />
             </div>
           </div>
         </div>

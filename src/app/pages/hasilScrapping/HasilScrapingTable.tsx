@@ -1,12 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
+import React from 'react'
 import { KTSVG } from '../../../_metronic/helpers'
-import EditModal from './EditModal'
 
 type Props = {
   className: string
   data: Array<string>
-  setShowAdd: any
 }
 
 interface ItemType{
@@ -17,32 +15,15 @@ interface ItemType{
     status: string
 }
 
-const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
-  const [show, setShow] = useState(false)
-
-  
+const TableHasilScraping: React.FC<Props> = ({className,data}) => {
+    console.log(data)
   return (
     <div className={`card ${className}`}>
-          <EditModal 
-            show={show} 
-            // topic={topic} 
-            // hastags={hastags} 
-            // keywords={keywords} 
-            // status={status} 
-            setShow={setShow} 
-            // setTopic={setTopic}
-            // setHastags={setHastags}
-            // setKeywords={setKeywords}
-            // setStatus={setStatus}
-            // id={id}
-          />
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
+        <h3 className='card-title align-items-start flex-column'>
+        </h3>
         <div className='card-toolbar'>
-          <a href='#' className='btn btn-sm btn-light-primary' onClick={() => setShowAdd(true)}>
-            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-2' />
-            New Topic
-          </a>
         </div>
       </div>
       {/* end::Header */}
@@ -68,47 +49,35 @@ const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
             {/* begin::Table body */}
             <tbody>
              {
-                 data.map(({id, topic, hastags, keywords, status, last_crawled} : any, i) => {
+                 data.map((item) => {
                      return (
-                        <tr key={id}>
+                        <tr>
                             <td className='text-center'>
-                             <span className='text-muted fw-bold text-muted d-block fs-7'>{id}</span>
+                             <span className='text-muted fw-bold text-muted d-block fs-7'>1</span>
                             </td>
                             <td>
-                                <span className='text-muted fw-bold text-muted d-block fs-7'>{topic}</span>
+                                <span className='text-muted fw-bold text-muted d-block fs-7'>Paid</span>
                             </td>
                             <td>
-                                 {
-                                   keywords.map((keyword: string) => {
-                                     return (
-                                      <span className='badge badge-light-primary fs-7 m-1  fw-bold'>{keyword}</span>
-                                     )
-                                   })
-                                 }
+                                <span className='text-muted fw-bold text-muted d-block fs-7'>Rejected</span>
                             </td>
                             <td>
-                                <span className='text-muted fw-bold text-muted d-block fs-7'>{hastags}</span>
+                                <span className='text-muted fw-bold text-muted d-block fs-7'>Insurance</span>
                             </td>
                             <td className='text-center '>
-                               {
-                                 status === 'AKTIF' ? (
-                                  <span className='badge badge-light-primary fs-7  fw-bold'>{status}</span>
-                                 ) : (
-                                  <span className='badge badge-light-danger fs-7  fw-bold'>{status}</span>
-                                 )
-                               }
+                                <span className='badge badge-light-primary fs-7  fw-bold'>Approved</span>
                             </td>
                             <td>
-                                <span className='badge badge-light-primary fs-7 fw-bold'>{last_crawled}</span>
+                                <span className='badge badge-light-primary fs-7 fw-bold'>Approved</span>
                             </td>
-                            <td className='text-center' id={id}>
+                            <td className='text-center'>
                                 <a href='#'  className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                     <KTSVG path='/media/icons/duotune/general/gen019.svg' className='svg-icon-3' />
                                 </a>
-                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1' onClick={() => setShow(true)}>
+                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                     <KTSVG path='/media/icons/duotune/art/art005.svg' className='svg-icon-3' />
                                 </a>
-                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm' >
+                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
                                     <KTSVG path='/media/icons/duotune/general/gen027.svg' className='svg-icon-3' />
                                 </a>
                             </td>
@@ -129,4 +98,4 @@ const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
   )
 }
 
-export {TablesScraping}
+export {TableHasilScraping}

@@ -11,9 +11,10 @@ const InputTags3 = (props) => {
     const [inputValue, setInputValue] = useState('')
     const [data, setData] = useState([])
 
+        // console.log(props.items, 'ini items')
 
     const handleKeyDown = (e) => {
-        console.log(e.keyCode)
+        // console.log(e.keyCode)
 
         if(e.keyCode === 13) {
            if (inputValue !== '') {
@@ -41,19 +42,34 @@ const InputTags3 = (props) => {
         let id = e.target.parentElement.id
         props.setItems((item) => item.filter((item, i) => i !== parseInt(id)))
     }
+    const arr = ['No Data']
 
     return (
+
+        
     
         <div className='tag' >
                 <ul >
-                    {props.items.map((item, i) => {
-                        return (
-                            <li className='items' key={i} id={i}>
-                                <span className='label'>{item}</span>
-                                <span className='delete-icon' onClick={handleRemove}>X</span>
-                            </li>
+                    {
+                        props.items === undefined ? (
+                            arr.map((item, i) => {
+                                return (
+                                    <li className='items' key={i} id={i}>
+                                        No data
+                                    </li>
+                                )
+                            })
+                        ) : (
+                            props.items.map((item, i) => {
+                                return (
+                                    <li className='items' key={i} id={i}>
+                                        <span className='label'>{item}</span>
+                                        <span className='delete-icon' onClick={handleRemove}>X</span>
+                                    </li>
+                                )
+                            })
                         )
-                    })}
+                    }
                     <input type='text' placeholder={props.placeholder} required onKeyDown={handleKeyDown} value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
                 </ul>
         </div>
