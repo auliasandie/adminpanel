@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import axios from 'axios'
-import React, {FC, useEffect, useState} from 'react'
+import {FC, useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllTopic } from '../../../setup/action/topicReducer'
@@ -8,9 +6,6 @@ import {PageTitle} from '../../../_metronic/layout/core'
 import Modal from '../Componen/Modal'
 import { TablesScraping } from './TableScraping'
 import { RootState } from '../../../setup'
-
-
-
 
 
 const DashboardScraping: FC = () => {
@@ -31,7 +26,7 @@ const DashboardScraping: FC = () => {
 
   return (
     <>
-      <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'Management Topik'})}</PageTitle>
+      <PageTitle breadcrumbs={[]}>Management Topic</PageTitle>
       {/* <DashboardTwitterpage /> */}
 
       <div>
