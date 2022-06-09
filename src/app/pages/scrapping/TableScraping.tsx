@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../setup'
 import {  getIdToDelete, hastagsToEdit, idToEdit, keywordsToEdit, statusToEdit, topicToEdit } from '../../../setup/action/topicReducer'
 import { KTSVG } from '../../../_metronic/helpers'
-import EditModal from './EditModal'
+import EditModal from '../Componen/EditModal'
 
 type Props = {
   className: string

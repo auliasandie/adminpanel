@@ -1,11 +1,23 @@
+.filter-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // background-color: red;
+    width: 100px;
+    padding-bottom: 15px;
+}
 .slide {
-    background-color: red;
+    // background-color: red;
+    overflow: hidden;
 }
 
 .off {
     height: 0;
+    transition: 0.3s ease-in-out;
 }
 
 .on {
-    height: 100%;
+    height: 400px;
+    transition: 0.3s ease-in-out !important;
 }
