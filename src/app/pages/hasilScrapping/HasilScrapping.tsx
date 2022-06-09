@@ -31,7 +31,7 @@ const HasilScrappingPage: FC = () => {
           <FormFilter />
         </div>
       </div>
-      <div className='card-body py-3 mt-4' style={{background: 'white'}}>
+      <div className='card-body py-3' style={{background: 'white'}}>
         <div className='tab-content border-1'>
         <TableHasilScraping className='mb-5 mb-xl-8' data={['']} />          
         </div>

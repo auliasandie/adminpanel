@@ -1,11 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import InputTags3 from './InputTags3'
 
 const EditModal = (props) => {
   const {topic, hastags,keywords, status, setHastags, setKeywords, setTopic, setStatus, id} = props
-  // const [topic, setTopic] = useState('')
-  // const [status, setStatus] = useState('')
+  const [newTopic, setNewTopic] = useState(topic)
+  const [newStatus, setNewStatus] = useState(status)
+  const [newKeywords, setNewKeywords] = useState(keywords)
+  const [newHastags, setNewHastags] = useState(hastags)
+  const dispatch = useDispatch()
 
 
   const handleSubmit = () => {
@@ -50,7 +54,7 @@ const EditModal = (props) => {
                 <div action="" className='form-control' style={{border: 'transparent'}} >
                   <div className="input-section p-5">
                     <label htmlFor="" className="name py-2">Topik</label>
-                    <input type="text" className="input topik-field" onChange={(e) => setTopic(e.target.value)} value={topic} />
+                    <input type="text" className="input topik-field" onChange={(e) => setNewTopic(e.target.value)} value={newTopic} />
                   </div>
                   <div className="input-section p-5 ">
                     <label htmlFor="" className="name" >Keywords</label>

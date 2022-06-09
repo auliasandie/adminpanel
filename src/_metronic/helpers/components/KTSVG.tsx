@@ -5,11 +5,12 @@ type Props = {
   className?: string
   path: string
   svgClassName?: string
+  // id: any
 }
 
-const KTSVG: React.FC<Props> = ({className = '', path, svgClassName = 'mh-50px'}) => {
+const KTSVG: React.FC<Props> = ({className = '' , path, svgClassName = 'mh-50px'}) => {
   return (
-    <span className={`svg-icon ${className}`}>
+    <span className={`svg-icon ${className}`} >
       <SVG src={toAbsoluteUrl(path)} className={svgClassName} />
     </span>
   )

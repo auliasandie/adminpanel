@@ -2,7 +2,14 @@
 
 const initialState = {
     data: [],
-    id: null
+    id: null, 
+    idEdit: null,
+    hastags: [],
+    keywords: [],
+    last_crawled: null,
+    topic: '',
+    status: ''
+    
 }
 
 export const getDataTopic = (state = initialState, action) => {
@@ -16,6 +23,36 @@ export const getDataTopic = (state = initialState, action) => {
         return {
             ...state,
             id: action.payload
+        }
+    }
+    if (action.type === 'SET_ID_EDIT') {
+        return {
+            ...state,
+                idEdit: action.payload.id,
+        }
+    }
+    if (action.type === 'SET_TOPIC_EDIT') {
+        return {
+            ...state,
+                idEdit: action.payload.id,
+        }
+    }
+    if (action.type === 'SET_HASTAGS_EDIT') {
+        return {
+            ...state,
+                idEdit: action.payload.id,
+        }
+    }
+    if (action.type === 'SET_KEYWORDS_EDIT') {
+        return {
+            ...state,
+                idEdit: action.payload.id,
+        }
+    }
+    if (action.type === 'SET_STATUS_EDIT') {
+        return {
+            ...state,
+                idEdit: action.payload.id,
         }
     }
     return state

@@ -1,5 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../setup'
+import {  getIdToDelete, hastagsToEdit, idToEdit, keywordsToEdit, statusToEdit, topicToEdit } from '../../../setup/action/topicReducer'
 import { KTSVG } from '../../../_metronic/helpers'
 import EditModal from './EditModal'
 
@@ -9,32 +12,44 @@ type Props = {
   setShowAdd: any
 }
 
-interface ItemType{
-    id: number
-    topic: string
-    keywords: Array<string>
-    hastags: Array<string>
-    status: string
-}
+
 
 const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
+  const { itemToEdit }: any = useSelector((state: RootState) => state.getDataTopic)
   const [show, setShow] = useState(false)
+  const dispatch = useDispatch()
 
+
+const handleEdit = (i: number) => {
+  const item = data.filter((item: any, index: number) => index === i)
+
+  // dispatch(idToEdit(item[0].id))
+  // dispatch(topicToEdit(item[0].topic))
+  // dispatch(hastagsToEdit(item[0].hastags))
+  // dispatch(keywordsToEdit(item[0].keywords))
+  // dispatch(statusToEdit(item[0].status))
+  setShow(true)
   
+}
+
+  const handleDelete = (i: number) => {
+    dispatch(getIdToDelete(i))
+    console.log(i)
+  }
   return (
     <div className={`card ${className}`}>
           <EditModal 
             show={show} 
-            // topic={topic} 
-            // hastags={hastags} 
-            // keywords={keywords} 
-            // status={status} 
+            // // topic={itemToEdit.topic} 
+            // hastags={itemToEdit.hastags} 
+            // keywords={itemToEdit.keywords} 
+            // status={itemToEdit.status} 
             setShow={setShow} 
-            // setTopic={setTopic}
-            // setHastags={setHastags}
-            // setKeywords={setKeywords}
-            // setStatus={setStatus}
-            // id={id}
+            // setTopic={itemToEdit.setTopic}
+            // setHastags={itemToEdit.setHastags}
+            // setKeywords={itemToEdit.setKeywords}
+            // setStatus={itemToEdit.setStatus}
+            // id={itemToEdit.id}
           />
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
@@ -72,16 +87,16 @@ const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
                      return (
                         <tr key={id}>
                             <td className='text-center'>
-                             <span className='text-muted fw-bold text-muted d-block fs-7'>{id}</span>
+                             <span className='text-muted fw-bold text-muted d-block fs-7'>{i + 1}</span>
                             </td>
                             <td>
                                 <span className='text-muted fw-bold text-muted d-block fs-7'>{topic}</span>
                             </td>
                             <td>
                                  {
-                                   keywords.map((keyword: string) => {
+                                   keywords.map((keyword: string, i:number) => {
                                      return (
-                                      <span className='badge badge-light-primary fs-7 m-1  fw-bold'>{keyword}</span>
+                                      <span key={i} className='badge badge-light-primary fs-7 m-1  fw-bold'>{keyword}</span>
                                      )
                                    })
                                  }
@@ -101,15 +116,15 @@ const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
                             <td>
                                 <span className='badge badge-light-primary fs-7 fw-bold'>{last_crawled}</span>
                             </td>
-                            <td className='text-center' id={id}>
-                                <a href='#'  className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
-                                    <KTSVG path='/media/icons/duotune/general/gen019.svg' className='svg-icon-3' />
+                            <td className='text-center' >
+                                <a href='#'   className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                    <KTSVG  path='/media/icons/duotune/general/gen019.svg' className='svg-icon-3' />
                                 </a>
-                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1' onClick={() => setShow(true)}>
-                                    <KTSVG path='/media/icons/duotune/art/art005.svg' className='svg-icon-3' />
+                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1' onClick={() => handleEdit(i)}>
+                                    <KTSVG  path='/media/icons/duotune/art/art005.svg' className='svg-icon-3' />
                                 </a>
-                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm' >
-                                    <KTSVG path='/media/icons/duotune/general/gen027.svg' className='svg-icon-3' />
+                                <a onClick={() => handleDelete(id)} href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm' >
+                                    <KTSVG  path='/media/icons/duotune/general/gen027.svg' className='svg-icon-3' />
                                 </a>
                             </td>
                       </tr>
