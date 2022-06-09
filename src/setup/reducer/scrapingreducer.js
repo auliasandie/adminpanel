@@ -4,10 +4,11 @@ const initialState = {
         keywords: [],
         hastags: [],
         status: 'draft',
-    }
+    },
+    datadetail:{}
 }
 
-const createTopicReducer = (state = initialState, action) => {
+export const createTopicReducer = (state = initialState, action) => {
     if(action.type === 'SET_FORM_DATA'){
         return{
             ...state,
@@ -18,7 +19,13 @@ const createTopicReducer = (state = initialState, action) => {
             }
         }
     }
+    if(action.type === 'GET_DATA_BY_ID'){
+        return{
+            ...state.datadetail,
+            datadetail: action.payload
+
+        }
+
+    }
     return state;
 }
-
-export default createTopicReducer;

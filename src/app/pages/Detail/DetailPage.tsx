@@ -1,11 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {FC, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import { Table } from 'react-bootstrap-v5'
 import {useIntl} from 'react-intl'
 import {PageTitle} from '../../../_metronic/layout/core'
+import { useDispatch, useSelector } from 'react-redux'
 import './detail.scss'
+import { RootState } from '../../../setup'
+import { useParams } from 'react-router-dom'
+import { getdetailbyid } from '../../../setup/action/scrapingaction'
 
 const DashboardDetail: FC = () => {
+  let {id}: any = useParams();
+  const dispatch :any = useDispatch()
+  const { datadetail } : any = useSelector((state: RootState) => state.createTopicReducer);
+  console.log(datadetail,"ini id guys")
+
+  useEffect(() => {
+    dispatch(getdetailbyid(id));
+  }, [])
   return (
     <div className='bg-white rounded'>
       <div className='text-center border-bottom'>

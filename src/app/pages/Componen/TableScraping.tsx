@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { RootState } from '../../../setup'
+import { getdetailbyid } from '../../../setup/action/scrapingaction'
 import {  getIdToDelete, hastagsToEdit, idToEdit, keywordsToEdit, statusToEdit, topicToEdit } from '../../../setup/action/topicReducer'
 import { KTSVG } from '../../../_metronic/helpers'
+import { DetailScraping } from '../Detail/DetailPage'
 import EditModal from './EditModal'
 
 type Props = {
@@ -31,10 +34,16 @@ const handleEdit = (i: number) => {
   setShow(true)
   
 }
-
+  let history = useHistory();
   const handleDelete = (i: number) => {
     dispatch(getIdToDelete(i))
     console.log(i)
+  }
+  const handledetail = (i: number) => {
+    history.push(`/detail-scraping/${i}`)
+    // history.push({  pathname: '/detail-scraping', state: i});
+    dispatch(getdetailbyid(i))
+    console.log(i,"ini detail idnyaa yahh") 
   }
   return (
     <div className={`card ${className}`}>
@@ -117,10 +126,10 @@ const handleEdit = (i: number) => {
                                 <span className='badge badge-light-primary fs-7 fw-bold'>{last_crawled}</span>
                             </td>
                             <td className='text-center' >
-                                <a href='#'   className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                <div onClick={() => handledetail(id)}   className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                     <KTSVG  path='/media/icons/duotune/general/gen019.svg' className='svg-icon-3' />
-                                </a>
-                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1' onClick={() => handleEdit(i)}>
+                                </div>
+                                <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1' onClick={() => handleEdit(id)}>
                                     <KTSVG  path='/media/icons/duotune/art/art005.svg' className='svg-icon-3' />
                                 </a>
                                 <a onClick={() => handleDelete(id)} href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm' >

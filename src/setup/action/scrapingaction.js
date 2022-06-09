@@ -31,3 +31,17 @@ export const SimpanToApi = (data) => {
         // })
     }
 }
+
+export const getdetailbyid = (id) => {
+  return (dispatch) => {
+    axios.get(`http://192.168.10.170:4008/api/v1/config/crawling/${id}`)
+    .then(res => {
+      dispatch({type: 'GET_DATA_BY_ID',payload: res.data.data});
+
+      // console.log(res.data.data,"data detail")
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+}

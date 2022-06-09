@@ -20,7 +20,7 @@ export function PrivateRoutes() {
       <Switch>
         <Route path='/scraping' component={DashboardScraping} />
         <Route path='/hasil-scraping' component={HasilScrapping} />
-        <Route path='/detail-scraping' component={DetailScraping} />
+        <Route path='/detail-scraping/:id' component={DetailScraping} />
         {/*<Route path='/builder' component={BuilderPageWrapper} />
         <Route path='/crafted/pages/profile' component={ProfilePage} />
         <Route path='/crafted/pages/wizards' component={WizardsPage} />
