@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllTopic } from '../../../setup/action/topicReducer'
 import {PageTitle} from '../../../_metronic/layout/core'
 import Modal from '../Componen/Modal'
-import { TablesScraping } from '../Componen/TableScraping'
+import { TablesScraping } from './TableScraping'
 import { RootState } from '../../../setup'
 
 

@@ -10,8 +10,15 @@ export const getAllTopic = () => {
         .catch(err => console.log(err, 'error'))
     }
 }
+export const getDataReducer = () => {
+    return (dispatch) => {
+        axios.get('http://192.168.10.170:4008/api/v1/crawling/data')
+        .then(res => console.log(res, 'iniresult'))
+        .catch(err => console.log(err, 'iniresult' ))
+    }
+}
 export const getIdToDelete = (id) => {
-    return (dispatch) => {console.log(id)
+    return (dispatch) => {
         axios.delete(`http://192.168.10.170:4008/api/v1/config/crawling/${id}`)
         .then(res => console.log(res))
         .catch(err => console.log(err))

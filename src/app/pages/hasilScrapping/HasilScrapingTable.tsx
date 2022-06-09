@@ -7,16 +7,10 @@ type Props = {
   data: Array<string>
 }
 
-interface ItemType{
-    id: number
-    topic: string
-    keywords: Array<string>
-    hastags: Array<string>
-    status: string
-}
+
 
 const TableHasilScraping: React.FC<Props> = ({className,data}) => {
-    console.log(data)
+    console.log(data, 'ini harusnya data')
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -37,41 +31,45 @@ const TableHasilScraping: React.FC<Props> = ({className,data}) => {
             <thead>
               <tr className='fw-bolder text-muted bg-light'>
                 <th className='ps-4 min-w-50px rounded-start'>Id</th>
-                <th className='ps-4 min-w-100px rounded-start'>Topik</th>
-                <th className='min-w-225px text-center'>Keywords</th>
-                <th className='min-w-225px text-center'>Hastags</th>
-                <th className='min-w-100px text-center'>Status</th>
+                <th className='ps-4 min-w-100px rounded-start'>Creator</th>
+                <th className='min-w-200px text-center'>Title</th>
+                <th className='min-w-250px text-center'>Content</th>
+                <th className='min-w-80px text-center'>Topic</th>
+                <th className='min-w-100px text-center'>Keyword</th>
                 <th className='min-w-100px text-center'>Last Update</th>
-                <th className='min-w-200px text-center rounded-end'>Action</th>
+                <th className='min-w-150px text-center rounded-end'>Action</th>
               </tr>
             </thead>
             {/* end::Table head */}
             {/* begin::Table body */}
             <tbody>
              {
-                 data.map((item) => {
+                 data.map(({content, createdAt, creator, keyword, title, topic, source_url} :any) => {
                      return (
                         <tr>
                             <td className='text-center'>
                              <span className='text-muted fw-bold text-muted d-block fs-7'>1</span>
                             </td>
                             <td>
-                                <span className='text-muted fw-bold text-muted d-block fs-7'>Paid</span>
+                                <span className='text-muted fw-bold text-muted d-block fs-7'>{creator}</span>
                             </td>
                             <td>
-                                <span className='text-muted fw-bold text-muted d-block fs-7'>Rejected</span>
+                                <span className='text-muted fw-bold text-muted d-block fs-7'>{title}</span>
+                            </td>
+                            <td style={{maxWidth: '250px'}}>
+                                <span className='text-muted fw-bold text-muted d-block fs-7 text-truncate'>{content}</span>
                             </td>
                             <td>
-                                <span className='text-muted fw-bold text-muted d-block fs-7'>Insurance</span>
+                                <span className='text-muted fw-bold text-muted d-block fs-7'>{topic}</span>
                             </td>
                             <td className='text-center '>
-                                <span className='badge badge-light-primary fs-7  fw-bold'>Approved</span>
+                                <span className='badge badge-light-primary fs-7 fw-bold'>{keyword}</span>
                             </td>
                             <td>
-                                <span className='badge badge-light-primary fs-7 fw-bold'>Approved</span>
+                                <span className='badge badge-light-primary fs-7  fw-bold'>{createdAt}</span>
                             </td>
                             <td className='text-center'>
-                                <a href='#'  className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                <a href={source_url} target='_blank'  className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                     <KTSVG path='/media/icons/duotune/general/gen019.svg' className='svg-icon-3' />
                                 </a>
                                 <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
