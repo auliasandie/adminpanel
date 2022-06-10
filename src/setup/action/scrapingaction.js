@@ -21,6 +21,7 @@ export const SimpanToApi = (data) => {
             showConfirmButton: false,
             timer: 1500
           })
+          .then(() => window.location.reload())
         })
         .catch(err => {
           console.log(err)

@@ -9,6 +9,7 @@ type Props = {
 
 
 
+
 const TableHasilScraping: React.FC<Props> = ({className,data}) => {
     console.log(data, 'ini harusnya data')
   return (

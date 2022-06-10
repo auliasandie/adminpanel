@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { RootState } from '../../../setup'
 import { getdetailbyid } from '../../../setup/action/scrapingaction'
-import {  getIdToDelete, hastagsToEdit, idToEdit, keywordsToEdit, statusToEdit, topicToEdit } from '../../../setup/action/topicReducer'
+import {  dataDetail, getIdToDelete, hastagsToEdit, idToEdit, keywordsToEdit, statusToEdit, topicToEdit } from '../../../setup/action/topicReducer'
 import { KTSVG } from '../../../_metronic/helpers'
 import EditModal from '../Componen/EditModal'
 
@@ -39,10 +39,11 @@ const handleEdit = (i: number) => {
     console.log(i)
   }
   const handledetail = (i: number) => {
+
+    const item = data.filter((item: any, index: number) => item.id === i)
+    dispatch(dataDetail(item))
     history.push(`/detail-scraping/${i}`)
-    // history.push({  pathname: '/detail-scraping', state: i});
-    dispatch(getdetailbyid(i))
-    console.log(i,"ini detail idnyaa yahh") 
+    console.log(item,"ini detail idnyaa yahh") 
   }
   return (
     <div className={`card ${className}`}>

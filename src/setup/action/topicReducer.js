@@ -31,8 +31,18 @@ export const getIdToDelete = (id) => {
                 showConfirmButton: false,
                 timer: 1500
               })
+              .then(() => window.location.reload())
+            
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
     }
 }
 export const idToEdit = (data) => {
@@ -58,5 +68,10 @@ export const hastagsToEdit = (data) => {
 export const keywordsToEdit = (data) => {
     return (dispatch) => {
         dispatch({type: 'KEYWORDS_TO_EDIT', payload: data})
+    }
+}
+export const dataDetail = (data) => {
+    return (dispatch) => {
+        dispatch({type: 'SET_DATA_DETAIL', payload: data})
     }
 }

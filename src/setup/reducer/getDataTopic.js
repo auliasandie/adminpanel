@@ -8,7 +8,8 @@ const initialState = {
     keywords: [],
     last_crawled: null,
     topic: '',
-    status: ''
+    status: '',
+    dataDetail: []
     
 }
 
@@ -53,6 +54,12 @@ export const getDataTopic = (state = initialState, action) => {
         return {
             ...state,
                 idEdit: action.payload.id,
+        }
+    }
+    if (action.type === 'SET_DATA_DETAIL') {
+        return {
+            ...state,
+                dataDetail: action.payload
         }
     }
     return state

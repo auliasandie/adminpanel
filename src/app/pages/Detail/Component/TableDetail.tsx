@@ -21,16 +21,14 @@ const detailScrapingBreadcrumb: Array<PageLink> = [
   }
 ]
 
-const TableDetail: React.FC<Props> = ({data}) => {
-  const intl = useIntl()
-//   let {id}: any = useParams()
-  const dispatch: any = useDispatch()
-//   const {datadetail}: any = useSelector((state: RootState) => state.createTopicReducer)
-console.log(data, 'ini')
+const TableDetail : FC<Props> = () => {
+  const { dataDetail } : any = useSelector((state: RootState) => state.getDataTopic)
+  let {id}: any = useParams()
+console.log(dataDetail, 'ini')
 
 //   useEffect(() => {
-//     dispatch(getdetailbyid(id))
-//   }, [])
+  //     dispatch(getdetailbyid(id))
+  //   }, [])
   return (
     <>
     <div className='bg-white rounded'>
@@ -40,51 +38,68 @@ console.log(data, 'ini')
         <div className='detail-box'>
           <div className='box'>
             <table className='table table-striped table-hover'>
-              <tbody>
-                    {
-                        setTimeout(() => {
-                            return (
-                                data.map(({id, topic, hastags, keywords, status, last_crawled} : any, i) => {
-                                    return (
-                                       <tr key={id}>
-                                           <td className='text-center'>
-                                            <span className='text-muted fw-bold text-muted d-block fs-7'>{i + 1}</span>
-                                           </td>
-                                           <td>
-                                               <span className='text-muted fw-bold text-muted d-block fs-7'>{topic}</span>
-                                           </td>
-                                           <td>
-                                                {
-                                                  keywords.map((keyword: string, i:number) => {
-                                                    return (
-                                                     <span key={i} className='badge badge-light-primary fs-7 m-1  fw-bold'>{keyword}</span>
-                                                    )
-                                                  })
-                                                }
-                                           </td>
-                                           <td>
-                                               <span className='text-muted fw-bold text-muted d-block fs-7'>{hastags}</span>
-                                           </td>
-                                           <td className='text-center '>
-                                              {
-                                                status === 'AKTIF' ? (
-                                                 <span className='badge badge-light-primary fs-7  fw-bold'>{status}</span>
-                                                ) : (
-                                                 <span className='badge badge-light-danger fs-7  fw-bold'>{status}</span>
-                                                )
-                                              }
-                                           </td>
-                                           <td>
-                                               <span className='badge badge-light-primary fs-7 fw-bold'>{last_crawled}</span>
-                                           </td>
-                                     </tr>
-                                     
-                                    )
-                                }, 2000)
-                            )
-                        })
-                    }
-              </tbody>
+             <tbody>
+                  {
+                    dataDetail.map(({topic,keywords,hastags,status,last_crawled}: any) => {
+                      return (
+                        <tr key={id}>
+                        
+                        <td>
+                            <span className='text-muted fw-bold text-muted d-block fs-7'>Topik</span>
+                        </td>
+                        <td>
+                            <span className='text-muted fw-bold text-muted d-block fs-7'>{topic}</span>
+                        </td>
+                       <tr>
+                         <td>
+                           Keywords
+                         </td>
+                        <td>
+                              {
+                                keywords.map((keyword: string, i:number) => {
+                                  return (
+                                    <span key={i} className='badge badge-light-primary fs-7 m-1  fw-bold'>{keyword}</span>
+                                  )
+                                })
+                              }
+                          </td>
+                       </tr>
+                       <tr>
+                        <td>
+                              <span className='text-muted fw-bold text-muted d-block fs-7'>Hastags</span>
+                          </td>
+                        <td>
+                              <span className='text-muted fw-bold text-muted d-block fs-7'>{hastags}</span>
+                          </td>
+                       </tr>
+                       <tr>
+                       <td >
+                          Status
+                        </td>
+                       <td >
+                           {
+                             status === 'AKTIF' ? (
+                              <span className='badge badge-light-primary fs-7  fw-bold'>{status}</span>
+                             ) : (
+                              <span className='badge badge-light-danger fs-7  fw-bold'>{status}</span>
+                             )
+                           }
+                        </td>
+                       </tr>
+                        <tr>
+                          <td>
+                              <span className='badge badge-light-primary fs-7 fw-bold'>Last Update</span>
+                          </td>
+                          <td>
+                              <span className='badge badge-light-primary fs-7 fw-bold'>{last_crawled}</span>
+                          </td>
+                        </tr>
+                  </tr>
+                      )
+                    })
+                  }
+                       
+              </tbody> 
             </table>
           </div>
         </div>

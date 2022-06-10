@@ -34,6 +34,7 @@ const DashboardDetail: React.FC<Props> = () => {
   useEffect(() => {
     dispatch(getdetailbyid(id))
   }, [])
+  console.log(datadetail, 'anjay')
   return (
     <>
     <PageTitle breadcrumbs={detailScrapingBreadcrumb}>Detail Data</PageTitle>

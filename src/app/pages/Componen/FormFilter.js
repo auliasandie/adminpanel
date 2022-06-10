@@ -1,5 +1,5 @@
 import React from 'react'
-import DatePickerr from './DatePicker'
+import DatePicker from './DatePicker'
 // import './form-filter.scss'
 
 const FormFilter = () => {
@@ -44,7 +44,7 @@ const FormFilter = () => {
             Waktu
           </label>
           <div>
-          <DatePickerr test={{borderRadius: '4px', border: '1px solid #c7cad3', height: '35px'}}/>
+          {/* <DatePicker/> */}
           </div>
         </div>
         <div className='btn-filter'>
