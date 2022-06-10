@@ -45,6 +45,36 @@ export const getIdToDelete = (id) => {
         })
     }
 }
+export const sendEditData = (data, id) => {
+    return () => { 
+    axios.put(`http://192.168.10.170:4008/api/v1/config/crawling/${id}`, data)
+    .then(res => {
+      console.log(res)
+      MySwal.fire({
+        icon: 'success',
+        title: 'Item Edited',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      .then(() => window.location.reload())
+      
+    })
+    .catch(err => {
+        console.log(err)    
+        MySwal.fire({
+            icon: 'error',
+            title: 'Error',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    })
+    }
+}
+export const setDataEdit = (data) => {
+    return (dispatch) => {
+        dispatch({type: 'GET_DATA_TO_EDIT', payload: data})
+    }
+}
 export const idToEdit = (data) => {
     return (dispatch) => {
         dispatch({type: 'ID_TO_EDIT', payload: data})

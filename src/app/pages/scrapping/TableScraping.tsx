@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { RootState } from '../../../setup'
 import { getdetailbyid } from '../../../setup/action/scrapingaction'
-import {  dataDetail, getIdToDelete, hastagsToEdit, idToEdit, keywordsToEdit, statusToEdit, topicToEdit } from '../../../setup/action/topicReducer'
+import {  dataDetail, getIdToDelete, hastagsToEdit, idToEdit, keywordsToEdit, setDataEdit, statusToEdit, topicToEdit } from '../../../setup/action/topicReducer'
 import { KTSVG } from '../../../_metronic/helpers'
 import EditModal from '../Componen/EditModal'
 
@@ -12,20 +12,33 @@ type Props = {
   className: string
   data: Array<string>
   setShowAdd: any
+  
 }
 
 
 
+
 const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
-  const { itemToEdit }: any = useSelector((state: RootState) => state.getDataTopic)
+  const [item, setItem] = useState()
   const [show, setShow] = useState(false)
+  const [newTopic, setNewTopic] = useState('')
+  const [newStatus, setNewStatus] = useState([])
+  const [newKeywords, setNewKeywords] = useState([])
+  const [newHastags, setNewHastags] = useState('')
+  const [id, setId] = useState('')
+ 
   const dispatch = useDispatch()
 
 
 const handleEdit = (i: number) => {
-  // const item = data.filter((item: any, index: number) => index === i)
-
-  // dispatch(idToEdit(item[0].id))
+  const item: any = data.filter((item: any, index: number) => item.id === i)
+  setItem(item)
+  setNewTopic(item[0].topic)
+  setNewHastags(item[0].hastags)
+  setNewStatus(item[0].status)
+  setNewKeywords(item[0].keywords)
+  setId(item[0].id)
+  // console.log(i, data, 'item')
   // dispatch(topicToEdit(item[0].topic))
   // dispatch(hastagsToEdit(item[0].hastags))
   // dispatch(keywordsToEdit(item[0].keywords))
@@ -49,16 +62,17 @@ const handleEdit = (i: number) => {
     <div className={`card ${className}`}>
           <EditModal 
             show={show} 
-            // // topic={itemToEdit.topic} 
-            // hastags={itemToEdit.hastags} 
-            // keywords={itemToEdit.keywords} 
-            // status={itemToEdit.status} 
+            topic={newTopic} 
+            hastags={newHastags} 
+            keywords={newKeywords} 
+            status={newStatus} 
             setShow={setShow} 
-            // setTopic={itemToEdit.setTopic}
-            // setHastags={itemToEdit.setHastags}
-            // setKeywords={itemToEdit.setKeywords}
-            // setStatus={itemToEdit.setStatus}
-            // id={itemToEdit.id}
+            setTopic={setNewTopic}
+            setHastags={setNewHastags}
+            setKeywords={setNewKeywords}
+            setStatus={setNewStatus}
+            data={item}
+            id={id}
           />
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>

@@ -9,7 +9,8 @@ const initialState = {
     last_crawled: null,
     topic: '',
     status: '',
-    dataDetail: []
+    dataDetail: [],
+    dataToEdit:[]
     
 }
 
@@ -24,6 +25,12 @@ export const getDataTopic = (state = initialState, action) => {
         return {
             ...state,
             id: action.payload
+        }
+    }
+    if (action.type === 'GET_DATA_TO_EDIT') {
+        return {
+            ...state,
+            dataToEdit: action.payload
         }
     }
     if (action.type === 'SET_ID_EDIT') {

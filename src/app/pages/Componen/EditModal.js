@@ -1,37 +1,45 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { sendEditData } from '../../../setup/action/topicReducer'
 import InputTags3 from './InputTags3'
 
 const EditModal = (props) => {
-  const {topic, hastags,keywords, status, setHastags, setKeywords, setTopic, setStatus, id} = props
-  const [newTopic, setNewTopic] = useState(topic)
-  const [newStatus, setNewStatus] = useState(status)
-  const [newKeywords, setNewKeywords] = useState(keywords)
-  const [newHastags, setNewHastags] = useState(hastags)
   const dispatch = useDispatch()
+  // const {dataToEdit} = useSelector((state) => state.getDataTopic)
+  // const {topic, hastags,keywords, status, setHastags, setKeywords, setTopic, setStatus, id} = props
+  // const [Topic, setNewTopic] = useState('')
+  // const [newStatus, setNewStatus] = useState([])
+  // const [newKeywords, setNewKeywords] = useState([])
+  // const [newHastags, setNewHastags] = useState('')
+  // setNewTopic(dataToEdit[0].topic)
+  // setNewKeywords(dataToEdit[0].keywords)
+  // setNewHastags(dataToEdit[0].hastags)
+  // setNewStatus(dataToEdit[0].status)
 
+  // console.log(dataToEdit, 'datao'
+
+
+ 
 
   const handleSubmit = () => {
-    console.log(topic)
-    console.log(hastags)
-    console.log(keywords)
-    console.log(status)
+    // console.log(newTopic)
+    // console.log(hastags)
+    // console.log(keywords)
+    // console.log(status)
+    console.log(props)
 
     const data ={
-      topic: topic,
-      hastags: hastags,
-      keywords: keywords,
-      status: status,
+      topic: props.topic,
+      hastags: props.hastags,
+      keywords: props.keywords,
+      status: props.status,
     }
+    // console.log(data, 'lawhdlh')
 
-   
-    axios.put(`http://192.168.10.170:4008/api/v1/config/crawling/${id}`, data)
-    .then(res => {
-      console.log(res)
-      window.location.reload()
-    })
-    .catch(err => console.log(err))
+
+   dispatch(sendEditData(data, props.id))
+   props.setShow(false)
   
     
   }
@@ -53,20 +61,20 @@ const EditModal = (props) => {
                 </div>
                 <div action="" className='form-control' style={{border: 'transparent'}} >
                   <div className="input-section p-5">
-                    <label htmlFor="" className="name py-2">Topik</label>
-                    <input type="text" className="input topik-field" onChange={(e) => setNewTopic(e.target.value)} value={newTopic} />
+                    <label htmlFor="" className="name py-2">Topic</label>
+                    <input type="text" className="input topik-field" onChange={(e) => props.setTopic(e.target.value)} value={props.topic} />
                   </div>
                   <div className="input-section p-5 ">
                     <label htmlFor="" className="name" >Keywords</label>
                    {
-                     keywords === '' || undefined ? (
+                     props.keywords === '' || undefined ? (
                       <InputTags3 placeholder="Input Keywords"
                       items={[]}  
                       />
                      ) : (
                       <InputTags3 placeholder="Input Keywords"
-                      items={keywords}
-                      setItems={setKeywords}  
+                      items={props.keywords}
+                      setItems={props.setKeywords}  
                       />
                      )
                    }
@@ -74,21 +82,21 @@ const EditModal = (props) => {
                   <div className="input-section p-5">
                     <label htmlFor="" className="name">Hashtags</label>
                     {
-                     hastags === '' ||  undefined ? (
+                     props.hastags === '' ||  undefined ? (
                       <InputTags3 placeholder="Input Keywords"
                       items={[]}  
                       />
                      ) : (
                       <InputTags3 placeholder="Input Keywords"
-                      items={hastags} 
-                      setItems={setHastags} 
+                      items={props.hastags} 
+                      setItems={props.setHastags} 
                       />
                      )
                    }
                   </div>
                   <div className="input-section p-5">
                     <label htmlFor="" className="name py-2">Status</label>
-                    <select name="" id="" className='form-select' value={status} onChange={(e) => setStatus(e.target.value)} >
+                    <select name="" id="" className='form-select' value={props.status} onChange={(e) => props.setStatus(e.target.value)} >
                       <option value="Draft">Draft</option>
                       <option value="Aktif">Aktif</option>
                       <option value="Non Aktif">Non Aktif</option>
