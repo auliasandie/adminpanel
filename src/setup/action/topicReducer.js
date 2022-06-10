@@ -1,5 +1,8 @@
 import axios from "axios"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
+const MySwal = withReactContent(Swal)
 
 export const getAllTopic = () => {
     return (dispatch) => {
@@ -20,7 +23,15 @@ export const getDataReducer = () => {
 export const getIdToDelete = (id) => {
     return (dispatch) => {
         axios.delete(`http://192.168.10.170:4008/api/v1/config/crawling/${id}`)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            MySwal.fire({
+                icon: 'success',
+                title: 'Item deleted',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
         .catch(err => console.log(err))
     }
 }

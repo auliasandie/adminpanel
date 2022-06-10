@@ -28,6 +28,7 @@ const Modal = (props) => {
     }
     // dispatch(postDataTopic(datapost));
     dispatch(SimpanToApi(datapost));
+    props.setShow(false)
     // console.log('data',datapost)
    
         // axios.post('http://192.168.10.170:4008/api/v1/config/crawling', datapost)

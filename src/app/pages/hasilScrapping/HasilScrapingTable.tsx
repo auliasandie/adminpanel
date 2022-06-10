@@ -44,11 +44,11 @@ const TableHasilScraping: React.FC<Props> = ({className,data}) => {
             {/* begin::Table body */}
             <tbody>
              {
-                 data.map(({content, createdAt, creator, keyword, title, topic, source_url} :any) => {
+                 data.map(({content, createdAt, creator, keyword, title, topic, source_url} :any, i) => {
                      return (
                         <tr>
                             <td className='text-center'>
-                             <span className='text-muted fw-bold text-muted d-block fs-7'>1</span>
+                             <span className='text-muted fw-bold text-muted d-block fs-7'>{i + 1}</span>
                             </td>
                             <td>
                                 <span className='text-muted fw-bold text-muted d-block fs-7'>{creator}</span>

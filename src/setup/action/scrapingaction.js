@@ -1,4 +1,10 @@
 import axios from "axios"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
+
+
 export const setdatatopic = (payload) =>{
     return {type: 'SET_FORM_DATA',payload}
 }
@@ -9,9 +15,21 @@ export const SimpanToApi = (data) => {
         axios.post('http://192.168.10.170:4008/api/v1/config/crawling', data)
         .then(res => {
           console.log(res)
+          MySwal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
         .catch(err => {
           console.log(err)
+          MySwal.fire({
+            icon: 'error',
+            title: 'Error',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
 
         // Axios.get(`http://localhost:4000/v1/blog/posts?page=${page}&perPage=4`)
