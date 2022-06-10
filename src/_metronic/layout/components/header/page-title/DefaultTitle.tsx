@@ -35,7 +35,7 @@ const DefaultTitle: FC = () => {
         config.pageTitle.breadCrumbs && (
           <>
             {config.pageTitle.direction === 'row' && (
-              <span className='h-20px border-gray-200 border-start mx-4'></span>
+              <span className='h-20px border-gray-400 border-start mx-4'></span>
             )}
             <ul className='breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1'>
               {Array.from(pageBreadcrumbs).map((item, index) => (

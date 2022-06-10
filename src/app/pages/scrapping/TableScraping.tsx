@@ -23,7 +23,7 @@ const TablesScraping: React.FC<Props> = ({className,data, setShowAdd}) => {
 
 
 const handleEdit = (i: number) => {
-  const item = data.filter((item: any, index: number) => index === i)
+  // const item = data.filter((item: any, index: number) => index === i)
 
   // dispatch(idToEdit(item[0].id))
   // dispatch(topicToEdit(item[0].topic))
