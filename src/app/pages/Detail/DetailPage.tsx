@@ -9,6 +9,7 @@ import {RootState} from '../../../setup'
 import {useParams} from 'react-router-dom'
 import {KTSVG} from '../../../_metronic/helpers'
 import {getdetailbyid} from '../../../setup/action/scrapingaction'
+import { TableDetail } from './Component/TableDetail'
 
 type Props = {
   data: Array<string>
@@ -20,46 +21,35 @@ const detailScrapingBreadcrumb: Array<PageLink> = [
     path: '/scraping',
     isSeparator: false,
     isActive: false,
-  },
-  {
-    title: 'test',
-    path: '/crafted/account/settings',
-    isSeparator: false,
-    isActive: false,
-  },
+  }
 ]
 
-const DashboardDetail: React.FC<Props> = ({data}) => {
+const DashboardDetail: React.FC<Props> = () => {
+  const intl = useIntl()
   let {id}: any = useParams()
   const dispatch: any = useDispatch()
-
+  const {datadetail}: any = useSelector((state: RootState) => state.createTopicReducer)
+// console.log(data, 'ini')
 
   useEffect(() => {
     dispatch(getdetailbyid(id))
   }, [])
   return (
+    <>
+    <PageTitle breadcrumbs={detailScrapingBreadcrumb}>Detail Data</PageTitle>
     <div className='bg-white rounded'>
       <div className='text-center border-bottom'>
         <h1 className='p-5 text-start'>Detail</h1>
 
         <div className='detail-box'>
           <div className='box'>
-            <table className='table table-striped table-hover'>
-              <tbody>
-                {data.map(({topic} : any ) => {
-                  return (
-                    <tr>
-                      <td>Judul</td>
-                      <td>{topic}</td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+            <TableDetail data={datadetail}/>
           </div>
         </div>
       </div>
     </div>
+    </>
+
   )
 }
 
@@ -119,4 +109,4 @@ const DetailScraping: FC = () => {
   )
 }
 
-export {DetailScraping}
+export {DashboardDetail}
