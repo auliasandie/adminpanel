@@ -52,16 +52,16 @@ const AsideMenu: React.FC<Props> = ({asideMenuCSSClasses}) => {
         )}
       >
         <div className='menu-item test'>
-        <ReactNestedMenu
+        {/* <ReactNestedMenu
           navParentClassname='vertical nested child-sub'
           navTopLevelParentClassname='vertical'
           navChildClassname='childs child-sub'
           navChildElementClassname='has-child child-sub'
           menuData={dataMenu}
-        />
+        /> */}
         </div>
         
-        {/* <AsideMenuMain /> */}
+        <AsideMenuMain />
       </div>
     </div>
   )

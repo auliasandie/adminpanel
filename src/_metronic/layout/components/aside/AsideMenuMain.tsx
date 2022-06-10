@@ -1,24 +1,66 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
 import {useIntl} from 'react-intl'
-import {KTSVG} from '../../../helpers'
 import {AsideMenuItemWithSub} from './AsideMenuItemWithSub'
 import {AsideMenuItem} from './AsideMenuItem'
-
-
+import {useEffect, useState} from 'react'
+import axios from 'axios'
+import {menu} from './dataDummy'
 
 export function AsideMenuMain() {
   const intl = useIntl()
 
+  // const [dataMenu, setDataMenu] = useState([])
+  // useEffect(() => {
+  //   axios.get('data.json').then((res) =>
+
+  //   setDataMenu(res.data.menu)
+  //   )
+  // })
+
+  //   let newusers=menu.map((menu)=>{
+  //     return {name: menu.title}
+
+  // // })
+  // console.log(newusers);
   return (
     <>
+      {menu.map((data) => {
+        return (
+          <div>
+            {/* <AsideMenuItem title={data.title} to={data.url} icon={data.icon} fontIcon={data.font} /> */}
+
+            <AsideMenuItemWithSub to={data.url} title={data.title} hasBullet={false}
+            icon={data.icon}>
+              <AsideMenuItem
+                to={data.url}
+                title={data.title}
+                hasBullet={true}
+              />
+            </AsideMenuItemWithSub>
+
+            {/* <AsideMenuItemWithSub
+        to={data.url}
+        title={data.title}
+        fontIcon={data.font}
+        icon={data.icon}
+      >
+        <AsideMenuItem to={data.url} title='Private Chat' hasBullet={true} />
+        <AsideMenuItem to='/apps/chat/group-chat' title='Group Chart' hasBullet={true} />
+        <AsideMenuItem to='/apps/chat/drawer-chat' title='Drawer Chart' hasBullet={true} />
+      </AsideMenuItemWithSub> */}
+          </div>
+        )
+      })}
+
       {/* <AsideMenuItem
         to='/scrapping'
         icon='/media/icons/duotune/art/art002.svg'
         title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
         fontIcon='bi-app-indicator'
       /> */}
-      <AsideMenuItem
+
+      {/* <AsideMenuItem
         to='/scraping'
         icon='/media/icons/setting.svg'
         title='Scraping'
@@ -30,6 +72,37 @@ export function AsideMenuMain() {
         title='Hasil Scraping'
         fontIcon='bi-app-indicator'
       />
+      <AsideMenuItem
+        to='/builder'
+        icon='/media/icons/duotune/general/gen019.svg'
+        title='Layout Builder'
+        fontIcon='bi-layers'
+      /> */}
+
+      {/* <div className='menu-item'>
+        <div className='menu-content pt-8 pb-2'>
+          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Crafted</span>
+        </div>
+      </div>
+      <AsideMenuItemWithSub
+        to='/crafted/pages'
+        title='Pages'
+        fontIcon='bi-archive'
+        icon='/media/icons/duotune/general/gen022.svg'
+      >
+        <AsideMenuItemWithSub to='/crafted/pages/profile' title='Profile' hasBullet={true}>
+          <AsideMenuItem to='/crafted/pages/profile/overview' title='Overview' hasBullet={true} />
+          <AsideMenuItem to='/crafted/pages/profile/projects' title='Projects' hasBullet={true} />
+          <AsideMenuItem to='/crafted/pages/profile/campaigns' title='Campaigns' hasBullet={true} />
+          <AsideMenuItem to='/crafted/pages/profile/documents' title='Documents' hasBullet={true} />
+          <AsideMenuItem
+            to='/crafted/pages/profile/connections'
+            title='Connections'
+            hasBullet={true}
+          />
+        </AsideMenuItemWithSub>
+      </AsideMenuItemWithSub> */}
+
       {/* <AsideMenuItem
         to='/builder'
         icon='/media/icons/duotune/general/gen019.svg'

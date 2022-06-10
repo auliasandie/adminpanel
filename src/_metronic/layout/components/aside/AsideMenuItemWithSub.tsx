@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import clsx from 'clsx'
 import {useLocation} from 'react-router'
 import {checkIsActive, KTSVG} from '../../../helpers'
@@ -24,6 +24,7 @@ const AsideMenuItemWithSub: React.FC<Props> = ({
   const isActive = checkIsActive(pathname, to)
   const {config} = useLayout()
   const {aside} = config
+  const [data, setData] = useState([])
 
   return (
     <div

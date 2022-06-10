@@ -4,6 +4,7 @@ import { type } from 'os'
 import React, {FC, useEffect, useState} from 'react'
 import {useIntl} from 'react-intl'
 import { array } from 'yup'
+import { AsideMenuMain } from '../../../_metronic/layout/components/aside/AsideMenuMain'
 import {PageTitle} from '../../../_metronic/layout/core'
 
 import Modal from '../Componen/Modal'
@@ -151,6 +152,8 @@ const DashboardTwitter: FC = () => {
           </div>
         </div>
       </div>
+
+      <AsideMenuMain/>
     </>
   )
 }

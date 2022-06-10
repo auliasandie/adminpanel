@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import {useLocation} from 'react-router'
 import {checkIsActive, KTSVG} from '../../../helpers'
 import {useLayout} from '../../core'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
 type Props = {
   to: string
@@ -25,6 +27,7 @@ const AsideMenuItem: React.FC<Props> = ({
   const isActive = checkIsActive(pathname, to)
   const {config} = useLayout()
   const {aside} = config
+
 
   return (
     <div className='menu-item'>

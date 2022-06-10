@@ -7,7 +7,6 @@
     {
       "id": 2,
       "title": "Hasil Scraping",
-      "url": "/hasil-scraping",
       "children": [{
         "id": 3,
         "title": "Child",
